@@ -1,9 +1,11 @@
 Provides an example of ArgSpec usage
 
 ## Usage:
-> test [*options*] name:_string_ [dst:_string_]
->> Specify name and optionally destination for display
 
+<blockquote> test [*options*] name:_string_ [dst:_string_]
+<blockquote> Specify name and optionally destination for display
+</blockquote></blockquote>
+  
 ## Options:
 >   **-v** 
 >>    Set verbose mode
