@@ -3,11 +3,21 @@ printf/scanf-style specification, which defines the arguments, the variables
 they should bind to, and their description. The same specification can also be
 used to generate documentation, either as a help string, or even in html format.
 
+It is available either as a classic single-header library, in `ArgSpec.h`, or
+more classic library files, `ArgSpec.hpp` and `ArgSpec.cpp`. The single header
+is just the two library files concatenated together. Because typical use is to
+only be included in main.cpp, the default is to include the implementation, and
+you should #define `ARG_SPEC_NO_IMPL` if you don't want this.
+
 The `ArgSpec` class handles bools, ints, floats, strings, enums, vectors of any
 of these, and repeated arguments. It also handles optional arguments, error
 detection, and help.
 
 Here's a simple example:
+
+    #include "ArgSpec.h"
+
+    ...
 
     enum { kSlotPresent, kFlagPresent };
 

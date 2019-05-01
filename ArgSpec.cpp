@@ -8,7 +8,11 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "ArgSpec.h"
+#if !defined(ARG_SPEC_H)
+    #include "ArgSpec.h"
+#endif
+
+#if !defined(ARG_SPEC_NO_IMPL)
 
 #include <string.h>
 #include <stdarg.h>
@@ -807,7 +811,8 @@ void cArgSpec::Internal::CreateHelpString(const char* commandName, string* helpS
         *helpString += "[options] ";
 
     AddArgDocs(helpString, mMainArgs.mArguments, helpType);
-    AddDocString(helpString, "        ", mMainArgs.mDescription);
+    if (!mMainArgs.mDescription.empty())
+        AddDocString(helpString, "        ", mMainArgs.mDescription);
 
     if (!mOptions.empty())
     {
@@ -1274,3 +1279,11 @@ tArgType cArgSpec::Internal::ArgTypeFromName(const char* typeName) const
 }
 
 }
+
+#ifdef _MSC_VER
+    #undef strcasecmp
+    #undef strncasecmp
+#endif
+
+#endif
+
