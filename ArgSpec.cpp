@@ -9,7 +9,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #if !defined(ARG_SPEC_H)
-    #include "ArgSpec.h"
+    #include "ArgSpec.hpp"
 #endif
 
 #if !defined(ARG_SPEC_NO_IMPL)
@@ -138,16 +138,19 @@ namespace
 
 
     // Numbers
+    inline tArgError ErrorGarbage(const char* arg, string* errorString)
+    {
+        Sprintf(errorString, "Garbage at end of number: '%s' ", arg);
+        return kArgErrorGarbage;
+    }
+
     tArgError Parse(int* location, const char* arg, string* errorString)
     {
         char* sEnd;
         int result = (int) strtol(arg, &sEnd, 0);
 
         if (sEnd[0] != 0)
-        {
-            Sprintf(errorString, "Garbage at end of number: '%s' ", arg);
-            return kArgErrorGarbage;
-        }
+            return ErrorGarbage(arg, errorString);
 
         if (location)
             *location = result;
