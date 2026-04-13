@@ -4,7 +4,7 @@
 //    Function:   Test for ArgSpec
 //
 
-#include "ArgSpec.h"
+#include "ArgSpec.hpp"
 
 
 using namespace AS;
@@ -28,7 +28,7 @@ cArgEnumInfo kColourEnum[] =
 
 struct cCommand
 {
-    enum 
+    enum
     {
         kOptionVerbose,
         kOptionHaveDest,
@@ -46,7 +46,7 @@ struct cCommand
     float       mLatitude       = 0;
     float       mLongitude      = 0;
     int         mJulianDay      = 1;
-    
+
     float       mV2[2] = {};
     float       mV3[3] = {};
     float       mV4[4] = {};
@@ -67,7 +67,7 @@ struct cCommand
     tHelpType   mHelpType       = kHelpFull;
 
     cArgSpec mArgSpec;
-    
+
     cCommand()
     {
         mArgSpec.ConstructSpec
@@ -215,7 +215,7 @@ int main(int argc, const char** argv)
     {
         printf("%s\n", test.mArgSpec.ErrorString());
         return -1;
-    }    
+    }
 
     if (test.mArgSpec.Flag(test.kOptionHelp))
     {

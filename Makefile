@@ -1,7 +1,7 @@
 CXXFLAGS = -std=c++11
 
 ArgSpecExample: ArgSpec.cpp ArgSpec.hpp ArgSpecExample.cpp
-	$(CXX) $(CXXFLAGS) -o $@ ArgSpecExample.cpp
+	$(CXX) $(CXXFLAGS) -o $@ ArgSpec.cpp ArgSpecExample.cpp
 
 test: ArgSpecExample
 	@./ArgSpecExample -h brief > test.txt
